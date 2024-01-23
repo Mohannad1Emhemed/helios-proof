@@ -23,6 +23,35 @@ variables:
 
 
 stages:
+- stage: Test
+  displayName: Test stage
+  jobs:
+  - job: Test
+    displayName: Test
+    pool: 
+      vmImage: $(vmImageName)
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '18.x'
+        displayName: 'Install Node.js for testing'
+      - script: |
+          npm i -g yarn
+        displayName: 'Install yarn'
+      - script: |
+          cd code/ && yarn install
+        displayName: 'Install packages'
+      - script: |
+          cd code/ && yarn test
+        displayName: 'Test code'
+      - task: PublishTestResults@2
+        displayName: 'Publish Test Results junit.xml'
+        inputs: 
+          testResultsFormat: 'JUnit'
+          testResultsFile : junit.xml
+      - script: |
+          cd code/ && rm -rf node_modules
+        displayName: 'Remove packages'
 - stage: Build
   displayName: Build stage
   jobs:
