@@ -48,7 +48,7 @@ stages:
         displayName: 'Publish Test Results junit.xml'
         inputs: 
           testResultsFormat: 'JUnit'
-          testResultsFile : junit.xml
+          testResultsFiles : junit.xml
       - script: |
           cd code/ && rm -rf node_modules
         displayName: 'Remove packages'
