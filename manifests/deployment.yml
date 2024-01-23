@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: heliosproof 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heliosproof
+  template:
+    metadata:
+      labels:
+        app: heliosproof 
+    spec:
+      containers:
+        - name: heliosproof 
+          image: mohannadacr.azurecr.io/heliosproof
+          ports:
+          - containerPort: 3000
