@@ -9,14 +9,10 @@ export default function Home() {
           Welcome to Alpha Corp
         </p>
         <div>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <span>
             Power By{' '}
             Helios
-          </a>
+          </span>
         </div>
       </div>
 
@@ -45,7 +41,7 @@ export default function Home() {
       </div>
 
       <div className={styles.grid}>
-        <Link href="/">
+        <Link href="/" passHref={true} legacyBehavior={true}>
           <a className={styles.card}>
             <h2>
               Home
@@ -54,7 +50,7 @@ export default function Home() {
           </a>
         </Link>
 
-        <Link href="/about">
+        <Link href="/about" passHref={true} legacyBehavior={true}>
           <a className={styles.card}>
             <h2>
               About

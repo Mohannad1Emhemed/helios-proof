@@ -33,7 +33,7 @@ export default function About() {
             </div>
 
             <div className={styles.grid}>
-                <Link href="/">
+                <Link href="/" passHref={true} legacyBehavior={true}>
                     <a className={styles.card} rel="noopener noreferrer">
                         <h2>
                             Home
